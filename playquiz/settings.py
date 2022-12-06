@@ -37,7 +37,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
+    'django.contrib.sites',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google'
+    
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,3 +140,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SITE_ID = 1
+
+AUTH_USER_MODEL = 'users.User'
+
+REST_USE_JWT = True
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None 
+ACCOUNT_EMAIL_REQUIRED = True        
+ACCOUNT_USERNAME_REQUIRED = False   
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
